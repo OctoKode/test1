@@ -1,11 +1,18 @@
 name: Test
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - 'willneverexist'
+  pull_request:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v1
-    - name: junk
-      run: aws --version
+    - name: try to do stuff with secrets
+      env:
+        SOME_SECRET: ${{ secrets.SOME_SECRET }}
+      run: echo $SOME_SECRET
+    - name: hello world
+      run: echo hello world
