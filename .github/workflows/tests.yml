@@ -5,6 +5,7 @@ on: [push]
 jobs:
   test:
     runs-on: self-hosted
+    container: debian:buster
     strategy:
       matrix:
         build:
