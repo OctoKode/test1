@@ -2,17 +2,15 @@ name: Test
 
 on:
   push:
-    branches-ignore:
-      - 'willneverexist'
   pull_request:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     steps:
-    - name: try to do stuff with secrets
-      env:
-        SOME_SECRET: ${{ secrets.SOME_SECRET }}
-      run: echo $SOME_SECRET
-    - name: hello world
-      run: echo hello world
+    - name: test venv1
+      run: /usr/bin/pip list
+    - name: test venv2
+      run: dpkg -l | grep env
+    - name: test venv3
+      run: /usr/bin/python3 -m venv -h
