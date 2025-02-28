@@ -2,17 +2,11 @@ name: Test
 
 on:
   push:
-    branches-ignore:
-      - 'willneverexist'
   pull_request:
 
 jobs:
   test:
     runs-on: self-hosted
     steps:
-    - name: try to do stuff with secrets
-      env:
-        SOME_SECRET: ${{ secrets.SOME_SECRET }}
-      run: echo $SOME_SECRET
     - name: hello world
       run: echo hello world
